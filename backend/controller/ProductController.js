@@ -6,7 +6,6 @@ const { format } = require("date-fns");
 
 module.exports.GetAllProductInformation = async (req, res) => {
   try {
-    console.log("Fetching all product information...");
     // Step 1: Fetch all products with owner info
     const products = await ProductModel.find({}).populate("owner", "name"); // only populate the owner's name
 
