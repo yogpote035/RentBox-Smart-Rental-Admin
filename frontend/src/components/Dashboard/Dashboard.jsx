@@ -62,36 +62,40 @@ function Dashboard() {
   ];
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl text-center font-bold mb-8">Admin Dashboard</h1>
+    <div className="p-8 bg-[#22223b] min-h-screen text-white">
+      <h1 className="text-4xl text-center font-bold mb-10">Admin Dashboard</h1>
 
-      <div className="flex flex-wrap gap-6 mb-8">
+      <div className="flex flex-wrap gap-6 mb-12">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="bg-white rounded-xl shadow-md p-8 min-w-[200px] flex-1"
+            className="bg-[#4a4e69] rounded-xl shadow-lg p-6 min-w-[200px] flex-1 text-center"
           >
-            <div className="text-4xl font-extrabold text-blue-600">
+            <div className="text-5xl font-extrabold text-[#c9ada7]">
               {stat.value}
             </div>
-            <div className="text-gray-600 mt-2">{stat.label}</div>
+            <div className="text-[#f2e9e4] mt-2 text-lg">{stat.label}</div>
           </div>
         ))}
       </div>
 
-      <div className="bg-white rounded-xl p-8 shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Recent Activities</h2>
-        <ul className="divide-y divide-gray-100">
+      <div className="bg-[#4a4e69] rounded-xl p-6 shadow-lg">
+        <h2 className="text-2xl font-semibold mb-6 text-[#f2e9e4]">
+          Recent Activities
+        </h2>
+        <ul className="divide-y divide-[#9a8c98]">
           {activities.length === 0 ? (
-            <p className="text-gray-500">No recent activities available.</p>
+            <p className="text-[#ccc]">No recent activities available.</p>
           ) : (
             activities.map((item, index) => (
               <li
                 key={index}
-                className="py-3 flex justify-between items-center"
+                className="py-4 flex justify-between items-center"
               >
-                <span className="font-medium">{item.description}</span>
-                <span className="text-gray-400 text-sm">{item.time}</span>
+                <span className="font-medium text-[#f2e9e4]">
+                  {item.description}
+                </span>
+                <span className="text-[#ccc] text-sm">{item.time}</span>
               </li>
             ))
           )}

@@ -14,27 +14,34 @@ export default function AllProductShow() {
       })
       .then((res) => {
         setProducts(res.data);
-      });
+      })
+      .catch((err) => console.error("Failed to fetch products:", err));
   }, []);
 
   return (
-    <div className="p-6 m-1 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
+    <div className="p-6 min-h-screen bg-[#22223b]">
+      <h1 className="text-3xl font-bold text-center text-white mb-8">
         Product Dashboard
       </h1>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {products.map((product, index) => (
-          <div key={index} className="bg-white shadow-md rounded-lg p-5">
-            <h2 className="text-xl font-semibold text-gray-800">
-              {product.name}
-            </h2>
-            <p className="text-gray-600 mb-2">Price: ₹{product.price}</p>
-            <p className="text-gray-600 mb-2">Owner: {product.ownerName}</p>
+          <div
+            key={index}
+            className="bg-[#4a4e69] text-white rounded-lg shadow-lg p-5 transition-transform transform hover:scale-105"
+          >
+            <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
+            <p className="text-sm text-[#d9d9d9] mb-1">
+              <span className="font-medium">Price:</span> ₹{product.price}
+            </p>
+            <p className="text-sm text-[#d9d9d9] mb-1">
+              <span className="font-medium">Owner:</span> {product.ownerName}
+            </p>
             <div className="flex justify-between mt-4">
-              <span className="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded">
+              <span className="text-xs bg-blue-200 text-blue-900 px-3 py-1 rounded-full font-medium">
                 Reviews: {product.reviewsCount}
               </span>
-              <span className="text-sm bg-green-100 text-green-700 px-2 py-1 rounded">
+              <span className="text-xs bg-green-200 text-green-900 px-3 py-1 rounded-full font-medium">
                 Orders: {product.ordersCount}
               </span>
             </div>
