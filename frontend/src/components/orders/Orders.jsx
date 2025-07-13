@@ -19,11 +19,18 @@ const Orders = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="p-4 text-white">Loading orders...</div>;
+  if (loading)
+    return (
+      <div className="p-4 text-rose-500 text-center text-7xl font-bold mt2">
+        Loading orders...
+      </div>
+    );
 
   return (
     <div className="p-4 max-w-7xl mx-auto bg-[#22223b] min-h-screen text-white">
-      <h1 className="text-4xl text-center font-bold mt-4 mb-5">Orders Dashboard</h1>
+      <h1 className="text-4xl text-center font-bold mt-4 mb-5">
+        Orders Dashboard
+      </h1>
       <div className="overflow-auto rounded shadow-md">
         <table className="min-w-full bg-[#2a2a40] border border-[#444] text-sm">
           <thead className="bg-[#3a3a55] text-indigo-200">
@@ -43,14 +50,19 @@ const Orders = () => {
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr key={order._id} className="border-t border-[#444] hover:bg-[#333350] transition">
+              <tr
+                key={order._id}
+                className="border-t border-[#444] hover:bg-[#333350] transition"
+              >
                 <td className="p-3">{order.productName}</td>
                 <td className="p-3">{order.ordererName}</td>
                 <td className="p-3">{order.city}</td>
                 <td className="p-3">{order.quantity}</td>
                 <td className="p-3">₹{order.pricePerDay}</td>
                 <td className="p-3">{order.totalDaysRented}</td>
-                <td className="p-3 font-semibold text-green-300">₹{order.totalPrice}</td>
+                <td className="p-3 font-semibold text-green-300">
+                  ₹{order.totalPrice}
+                </td>
                 <td className="p-3">{order.from}</td>
                 <td className="p-3">{order.to}</td>
                 <td className="p-3">{order.createdAt}</td>
