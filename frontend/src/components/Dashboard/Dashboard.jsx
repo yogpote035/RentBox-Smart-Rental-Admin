@@ -5,6 +5,7 @@ function Dashboard() {
   const [orders, setOrders] = useState(0);
   const [users, setUsers] = useState(0);
   const [products, setProducts] = useState(0);
+  const [totalRevenue, setTotalRevenue] = useState(0);
   const [activities, setActivities] = useState([]);
 
   const OrdersUsersProducts = async () => {
@@ -22,6 +23,7 @@ function Dashboard() {
         setOrders(res.data.totalOrders);
         setUsers(res.data.totalUsers);
         setProducts(res.data.totalProducts);
+        setTotalRevenue(res.data.TotalRevenue);
       }
     } catch (error) {
       console.error("Error fetching order, product, and user counts:", error);
@@ -59,6 +61,10 @@ function Dashboard() {
     { label: "Total Users", value: users },
     { label: "Total Products", value: products },
     { label: "Total Orders", value: orders },
+    {
+      label: "Total Revenue From Orders",
+      value: totalRevenue ? `₹ ${totalRevenue}` : "₹ 0",
+    },
   ];
 
   return (
