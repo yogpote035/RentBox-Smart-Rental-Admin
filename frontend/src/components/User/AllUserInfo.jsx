@@ -27,7 +27,7 @@ function AllUserInfo() {
 
   return (
     <div className="min-h-screen bg-[#22223b] px-4 py-10 sm:px-10 font-sans text-gray-100">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center text-white tracking-wide">
+      <h1 className="text-4xl text-center text-white font-bold mb-5">
         Users & Activities
       </h1>
 

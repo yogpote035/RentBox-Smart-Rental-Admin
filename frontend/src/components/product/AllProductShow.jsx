@@ -20,9 +20,7 @@ export default function AllProductShow() {
 
   return (
     <div className="p-6 min-h-screen bg-[#22223b]">
-      <h1 className="text-3xl font-bold text-center text-white mb-8">
-        Product Dashboard
-      </h1>
+      <h1 className="text-4xl text-center mt-4 text-white font-bold mb-5">Product Dashboard</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {products.map((product, index) => (

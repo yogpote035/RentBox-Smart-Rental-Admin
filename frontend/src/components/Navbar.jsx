@@ -83,6 +83,14 @@ const Navbar = () => {
             </li>
             <li>
               <button
+                onClick={() => handleNav("/orders")}
+                className="text-white font-medium hover:text-[#9a8c98] transition-colors duration-200"
+              >
+                Orders
+              </button>
+            </li>
+            <li>
+              <button
                 onClick={() => handleNav("/users")}
                 className="text-white font-medium hover:text-[#9a8c98] transition-colors duration-200"
               >

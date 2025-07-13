@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import AllProductShow from "./components/product/AllProductShow";
 import AllUserInfo from "./components/User/AllUserInfo";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Orders from "./components/orders/Orders";
 function App() {
   return (
     <>
@@ -39,6 +40,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AllUserInfo />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/orders"
+              element={
+                <ProtectedRoute>
+                  <Orders />
                 </ProtectedRoute>
               }
             />
