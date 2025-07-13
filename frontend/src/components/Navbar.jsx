@@ -148,6 +148,14 @@ const Navbar = () => {
                 >
                   Products
                 </button>
+              </li>{" "}
+              <li>
+                <button
+                  onClick={() => handleNav("/orders")}
+                  className="text-white font-medium hover:text-[#9a8c98] text-left w-full"
+                >
+                  Orders
+                </button>
               </li>
               <li>
                 <button
