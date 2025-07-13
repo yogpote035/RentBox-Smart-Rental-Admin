@@ -60,3 +60,26 @@ module.exports.GetAllOrdersInfo = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+module.exports.GetOrderStatsActiveAndExpired = async (req, res) => {
+  try {
+    const orders = await OrderModel.find({}, "to"); // Only fetch 'to' field
+    const TotalOrders = await OrderModel.countDocuments({}); // Only fetch 'to' field
+
+    const today = new Date();
+
+    let totalActive = 0;
+    let totalExpired = 0;
+
+    orders.forEach((order) => {
+      const isExpired = isBefore(new Date(order.to), today);
+      if (isExpired) totalExpired++;
+      else totalActive++;
+    });
+
+    res.status(200).json({ totalActive, totalExpired, TotalOrders });
+  } catch (err) {
+    console.error("Error getting order stats:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};

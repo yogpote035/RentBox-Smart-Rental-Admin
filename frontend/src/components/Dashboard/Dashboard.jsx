@@ -71,7 +71,7 @@ function Dashboard() {
     <div className="p-8 bg-[#22223b] min-h-screen text-white">
       <h1 className="text-4xl text-center font-bold mb-5">Admin Dashboard</h1>
       <div className="text-2xl text-center font-bold mb-10">
-        Welcome back, {localStorage.getItem("username")} 👋
+        Welcome back, {localStorage.getItem("username") || "Master"} 👋
       </div>
 
       <div className="flex flex-wrap gap-6 mb-12">

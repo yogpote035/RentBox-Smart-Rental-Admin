@@ -5,6 +5,9 @@ import clsx from "clsx";
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [active, setActiveOrders] = useState(0);
+  const [expired, setExpiredOrders] = useState(0);
+  const [totalOrders, setTotalOrders] = useState(0);
 
   useEffect(() => {
     axios
@@ -19,6 +22,24 @@ const Orders = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/order/order-state-count`, {
+        headers: {
+          token: localStorage.getItem("token"),
+          userId: localStorage.getItem("userId"),
+        },
+      })
+      .then((res) => {
+        setActiveOrders(res.data.totalActive);
+        setExpiredOrders(res.data.totalExpired);
+        setTotalOrders(res.data.TotalOrders);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch order state count", err);
+      });
+  }, []);
+
   if (loading)
     return (
       <div className="p-4 text-rose-500 text-center text-7xl font-bold mt2">
@@ -31,6 +52,27 @@ const Orders = () => {
       <h1 className="text-4xl text-center font-bold mt-4 mb-5">
         Orders Dashboard
       </h1>
+
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <div className="bg-[#4a4e69] p-5 rounded-lg shadow text-center">
+          <h3 className="text-3xl font-bold mb-1">Active Orders</h3>
+          <p className="font-bold">
+            <span className="text-[#c9ada7] text-8xl">{active}</span>
+          </p>
+        </div>
+        <div className="bg-[#4a4e69] p-5 rounded-lg shadow text-center">
+          <h3 className="text-3xl font-bold mb-1">Expired Orders</h3>
+          <p className="font-bold">
+            <span className="text-[#c9ada7] text-8xl">{expired}</span>
+          </p>
+        </div>
+        <div className="bg-[#4a4e69] p-5 rounded-lg shadow text-center">
+          <h3 className="text-3xl font-bold mb-1">Total Orders</h3>
+          <p className="font-bold">
+            <span className="text-[#c9ada7] text-8xl">{totalOrders}</span>
+          </p>
+        </div>
+      </div>
       <div className="overflow-auto rounded shadow-md">
         <table className="min-w-full bg-[#2a2a40] border border-[#444] text-sm">
           <thead className="bg-[#3a3a55] text-indigo-200">
